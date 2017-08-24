@@ -1,3 +1,4 @@
+import { GlobalState } from './../global.state';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarMenuComponent implements OnInit {
 
+  public isMenuCollapsed: boolean = false;
+
+  public navs = [{
+    path: '/dashboard',
+    title: 'Dashboard',
+    class: 'fa fa-bar-chart-o'
+  }, {
+    path: '/map',
+    title: 'Map',
+    class: 'fa fa-laptop'
+  }];
+
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }
