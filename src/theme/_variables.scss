@@ -1,6 +1,6 @@
-$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
-
 $assets-root: 'assets/';
 $images-root: $assets-root + 'img/';
-$fonts-root: $assets-root + 'fonts/';
-$fa-font-path: $fonts-root + 'font-awesome';
+
+$fonts-root: 'theme/fonts/';
+$icon-font-path: $fonts-root + 'glyphicons/';
+$fa-font-path : $fonts-root + 'font-awesome';
