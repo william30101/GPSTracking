@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 const SHARED_COMPONENTS = [
   FooterComponent,
@@ -16,7 +17,8 @@ const SHARED_COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [GlobalState, AuthGuard],
   declarations: [
