@@ -1,4 +1,9 @@
 import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
+import {FirebaseApiService} from '../../shared/firebase-api.service';
+import {UserService} from '../../shared/user.service';
+import {NgForm} from '@angular/forms';
+import * as firebase from 'firebase';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,16 +11,60 @@ import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  emailVerificationMessage: boolean = false;
 
-  constructor(private renderer: Renderer) {
+  constructor(private renderer: Renderer,
+              private fire: FirebaseApiService,
+              private user: UserService,
+              private router: Router) {
     this.renderer.setElementClass(document.body, 'login', true);
   }
 
   ngOnInit() {
   }
 
+  onSubmit(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(user => {
+        if (!user.emailVerified) {
+          this.emailVerificationMessage = true;
+          this.logout();
+          return null;
+        } else {
+          return this.fire.getUserFromDatabase(user.uid);
+        }
+
+      })
+      .then(userFromDatabase => {
+        if (userFromDatabase) {
+          this.user.set(userFromDatabase);
+          this.router.navigate(['/dashboard']);
+        }
+
+      })
+      .catch(err => {
+       // this.notifier.display('error', err);
+        console.log('error' + err);
+      });
+
+  }
+
+
   ngOnDestroy() {
     this.renderer.setElementClass(document.body, 'login', false);
   }
+
+
+  logout() {
+    firebase.auth().signOut()
+      .catch(err => {
+        // this.notifier.display('error', err);
+        console.log('signout err ' + err);
+      });
+  }
+
 
 }
