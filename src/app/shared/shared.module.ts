@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { UserService } from './services/user.service';
+import {NotificationService} from "./services/notification.service";
 
 const SHARED_COMPONENTS = [
   FooterComponent,
@@ -28,7 +29,8 @@ const SHARED_COMPONENTS = [
     GlobalState,
     AuthGuard,
     FirebaseApiService,
-    UserService
+    UserService,
+    NotificationService
   ],
   declarations: [
     ...SHARED_COMPONENTS

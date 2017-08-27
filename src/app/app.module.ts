@@ -14,6 +14,7 @@ import { AgmCoreModule } from '@agm/core';
 import { DeviceComponent } from './pages/device/device.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { RegisterComponent } from './pages/register/register.component';
+import { NotificationComponent } from './pages/notification/notification.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RegisterComponent } from './pages/register/register.component';
     MapComponent,
     LayoutComponent,
     DeviceComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

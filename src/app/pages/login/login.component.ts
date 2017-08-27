@@ -4,6 +4,7 @@ import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private renderer: Renderer,
     private fire: FirebaseApiService,
     private user: UserService,
-    private router: Router) {
+    private router: Router,
+    private notifier: NotificationService
+  ) {
     this.renderer.setElementClass(document.body, 'login', true);
   }
 
@@ -46,8 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       })
       .catch(err => {
-        // this.notifier.display('error', err);
-        console.log('error' + err);
+        this.notifier.display('error', err);
       });
 
   }

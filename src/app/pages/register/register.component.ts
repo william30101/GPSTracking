@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
   selector: 'app-register',
@@ -12,8 +13,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   displayVerificationMessage: boolean = false;
 
   constructor(
-    private renderer: Renderer
-  ) {
+    private renderer: Renderer,
+    private notifier: NotificationService) {
     this.renderer.setElementClass(document.body, 'login', true);
   }
 
@@ -43,10 +44,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
           registrationDate: new Date().toString(),
           name: name
         });
+
+
       })
       .catch(err => {
-        // this.notifier.display('error', err);
-        console.log('error : ' + err);
+        this.notifier.display('error', err);
       });
+
+
   }
 }

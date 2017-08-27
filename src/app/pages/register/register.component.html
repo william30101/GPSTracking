@@ -37,5 +37,18 @@
         </form>
       </section>
     </div>
+
+    <div class="row message-row" *ngIf="displayVerificationMessage">
+      <div class="col-lg-8">
+        <div class="alert alert-info">
+          A verification email has been sent to this email address.
+          Please follow the instructions in that email to verify your account.
+          <p>
+            Once verified. Please goto 'Sign-in' and sign into the application.
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
