@@ -32,7 +32,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     FormsModule,
     Ng2SmartTableModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCsuIt8ZPToELVz_r5gOJJIACfMDbJ7ZHA'
+      apiKey: '********'
     })
   ],
   providers: [FirebaseApiService, UserService],
