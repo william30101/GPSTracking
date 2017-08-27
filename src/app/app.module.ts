@@ -12,6 +12,7 @@ import { FormsModule} from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { DeviceComponent } from './pages/device/device.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     DashboardComponent,
     MapComponent,
     LayoutComponent,
-    DeviceComponent
+    DeviceComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -4,9 +4,10 @@ import { MapComponent } from './pages/map/map.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {DeviceComponent} from "./pages/device/device.component";
+import { DeviceComponent } from './pages/device/device.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   fallbackRoute
 ];
 
