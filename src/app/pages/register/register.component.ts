@@ -1,4 +1,6 @@
 import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-register',
@@ -6,6 +8,8 @@ import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
+
+  displayVerificationMessage: boolean = false;
 
   constructor(
     private renderer: Renderer
@@ -18,5 +22,31 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.renderer.setElementClass(document.body, 'login', false);
+  }
+
+  onSubmit(form: NgForm) {
+
+    const name = form.value['username'];
+    const email = form.value.email;
+    const password = form.value.password;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(userData => {
+
+        userData.sendEmailVerification();
+
+        this.displayVerificationMessage = true;
+
+        return firebase.database().ref('users/' + userData.uid).set({
+          email: email,
+          uid: userData.uid,
+          registrationDate: new Date().toString(),
+          name: name
+        });
+      })
+      .catch(err => {
+        // this.notifier.display('error', err);
+        console.log('error : ' + err);
+      });
   }
 }
