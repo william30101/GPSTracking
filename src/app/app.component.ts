@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   ngOnInit() {
     const config = {
       apiKey: 'AIzaSyCii4JCVPbozCJq3oSxDYGUlGKmqLhLFME',
@@ -17,5 +18,6 @@ export class AppComponent implements OnInit {
       messagingSenderId: '335491343092'
     };
     firebase.initializeApp(config);
+
   }
 }

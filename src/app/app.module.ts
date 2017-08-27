@@ -11,6 +11,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { FirebaseApiService } from './shared/firebase-api.service';
 import { UserService } from './shared/user.service';
 import { FormsModule} from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,9 @@ import { FormsModule} from '@angular/forms';
     AppRoutingModule,
     SharedModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCsuIt8ZPToELVz_r5gOJJIACfMDbJ7ZHA'
+    })
   ],
   providers: [FirebaseApiService, UserService],
   bootstrap: [AppComponent]
