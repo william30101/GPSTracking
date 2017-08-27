@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {DeviceComponent} from "./pages/device/device.component";
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'map', component: MapComponent, canActivate: [AuthGuard] }
+      { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
+      { path: 'device', component: DeviceComponent, canActivate: [AuthGuard] }
     ]
   },
   { path: 'login', component: LoginComponent },

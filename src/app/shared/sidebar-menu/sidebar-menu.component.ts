@@ -27,6 +27,10 @@ export class SidebarMenuComponent implements OnInit {
     path: '/map',
     title: 'Map',
     class: 'fa fa-map'
+  }, {
+    path: '/device',
+    title: 'Device',
+    class: 'fa fa-mobile-phone'
   }];
 
   constructor( private user: UserService,

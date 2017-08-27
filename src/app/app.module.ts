@@ -12,6 +12,8 @@ import { FirebaseApiService } from './shared/firebase-api.service';
 import { UserService } from './shared/user.service';
 import { FormsModule} from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { DeviceComponent } from './pages/device/device.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 @NgModule({
@@ -20,13 +22,15 @@ import { AgmCoreModule } from '@agm/core';
     LoginComponent,
     DashboardComponent,
     MapComponent,
-    LayoutComponent
+    LayoutComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     FormsModule,
+    Ng2SmartTableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCsuIt8ZPToELVz_r5gOJJIACfMDbJ7ZHA'
     })
