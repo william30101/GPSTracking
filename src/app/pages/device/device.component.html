@@ -1,0 +1,15 @@
+<div class="right_col" role="main">
+  <div class="">
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <ng2-smart-table [settings]="settings"
+                         [source]="data"
+                         (deleteConfirm)="onDeleteConfirm($event)"
+                         (editConfirm)="onSaveConfirm($event)"
+                         (createConfirm)="onCreateConfirm($event)">
+        </ng2-smart-table>
+      </div>
+    </div>
+  </div>
+</div>
