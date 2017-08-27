@@ -8,6 +8,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MapComponent } from './pages/map/map.component';
 import { LayoutComponent } from './layout/layout.component';
+import { FirebaseApiService } from './shared/firebase-api.service';
+import { UserService } from './shared/user.service';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,10 @@ import { LayoutComponent } from './layout/layout.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [FirebaseApiService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
