@@ -22,11 +22,11 @@ export class SidebarMenuComponent implements OnInit {
   public navs = [{
     path: '/dashboard',
     title: 'Dashboard',
-    class: 'fa fa-bar-chart-o'
+    class: 'fa fa-dashboard'
   }, {
     path: '/map',
     title: 'Map',
-    class: 'fa fa-laptop'
+    class: 'fa fa-map'
   }];
 
   constructor( private user: UserService,
