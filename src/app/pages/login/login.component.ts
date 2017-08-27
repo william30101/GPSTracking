@@ -1,9 +1,9 @@
+import { UserService } from './../../shared/services/user.service';
+import { FirebaseApiService } from './../../shared/services/firebase-api.service';
 import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
-import {FirebaseApiService} from '../../shared/firebase-api.service';
-import {UserService} from '../../shared/user.service';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +14,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   emailVerificationMessage: boolean = false;
 
   constructor(private renderer: Renderer,
-              private fire: FirebaseApiService,
-              private user: UserService,
-              private router: Router) {
+    private fire: FirebaseApiService,
+    private user: UserService,
+    private router: Router) {
     this.renderer.setElementClass(document.body, 'login', true);
   }
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       })
       .catch(err => {
-       // this.notifier.display('error', err);
+        // this.notifier.display('error', err);
         console.log('error' + err);
       });
 

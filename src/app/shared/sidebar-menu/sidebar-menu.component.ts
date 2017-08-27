@@ -1,8 +1,8 @@
+import { FirebaseApiService } from './../services/firebase-api.service';
+import { UserService } from './../services/user.service';
 import { GlobalState } from './../global.state';
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../user.service';
-import {Router} from '@angular/router';
-import {FirebaseApiService} from '../firebase-api.service';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
 @Component({
@@ -29,9 +29,9 @@ export class SidebarMenuComponent implements OnInit {
     class: 'fa fa-laptop'
   }];
 
-  constructor( private user: UserService,
-               private router: Router,
-               private fire: FirebaseApiService) { }
+  constructor(private user: UserService,
+    private router: Router,
+    private fire: FirebaseApiService) { }
 
   ngOnInit() {
     this.user.statusChange.subscribe(userData => {
