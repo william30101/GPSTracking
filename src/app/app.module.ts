@@ -1,3 +1,4 @@
+import { agmConfig } from './app.conf';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -31,9 +32,7 @@ import { RegisterComponent } from './pages/register/register.component';
     SharedModule,
     FormsModule,
     Ng2SmartTableModule,
-    AgmCoreModule.forRoot({
-      apiKey: '********'
-    })
+    AgmCoreModule.forRoot(agmConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
