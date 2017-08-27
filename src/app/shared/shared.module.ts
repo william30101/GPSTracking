@@ -1,12 +1,15 @@
-import { GlobalState } from './global.state';
-import { RouterModule } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
 import { AuthGuard } from './services/auth.guard';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
-import { FooterComponent } from './footer/footer.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CommonModule } from '@angular/common';
+import { FirebaseApiService } from './services/firebase-api.service';
+import { FooterComponent } from './footer/footer.component';
+import { GlobalState } from './global.state';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
+import { UserService } from './services/user.service';
 
 const SHARED_COMPONENTS = [
   FooterComponent,
@@ -18,9 +21,15 @@ const SHARED_COMPONENTS = [
   imports: [
     CommonModule,
     RouterModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    // AngularFireModule.initializeApp(firebaseConfig),
   ],
-  providers: [GlobalState, AuthGuard],
+  providers: [
+    GlobalState,
+    AuthGuard,
+    FirebaseApiService,
+    UserService
+  ],
   declarations: [
     ...SHARED_COMPONENTS
   ],

@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import { firebaseConfig } from './shared/firebase-config.const';
+import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 
 @Component({
@@ -9,15 +10,6 @@ import * as firebase from 'firebase';
 export class AppComponent implements OnInit {
 
   ngOnInit() {
-    const config = {
-      apiKey: '********',
-      authDomain: '********',
-      databaseURL: '********',
-      projectId: '********',
-      storageBucket: '********',
-      messagingSenderId: '********'
-    };
-    firebase.initializeApp(config);
-
+    firebase.initializeApp(firebaseConfig);
   }
 }

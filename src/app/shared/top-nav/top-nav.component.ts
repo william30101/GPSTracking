@@ -1,8 +1,8 @@
+import { FirebaseApiService } from './../services/firebase-api.service';
+import { UserService } from './../services/user.service';
 import { GlobalState } from './../global.state';
 import { Component, OnInit, Renderer } from '@angular/core';
-import {UserService} from '../user.service';
-import {Router} from '@angular/router';
-import {FirebaseApiService} from '../firebase-api.service';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
 @Component({
@@ -18,10 +18,10 @@ export class TopNavComponent implements OnInit {
   uid: string;
 
   constructor(private renderer: Renderer,
-              private _state: GlobalState,
-              private user: UserService,
-              private router: Router,
-              private fire: FirebaseApiService) { }
+    private _state: GlobalState,
+    private user: UserService,
+    private router: Router,
+    private fire: FirebaseApiService) { }
 
   ngOnInit() {
 
@@ -65,4 +65,11 @@ export class TopNavComponent implements OnInit {
     this.renderer.setElementClass(document.body, 'nav-sm', this.isMenuCollapsed);
   }
 
+  public logout() {
+    firebase.auth().signOut()
+      .catch(err => {
+        // this.notifier.display('error', err);
+        console.log('signout err ' + err);
+      });
+  }
 }
