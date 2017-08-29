@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+
+const TOP_PADDING = 141;
 
 @Component({
   selector: 'app-layout',
@@ -7,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
+  @ViewChild('main') el: ElementRef;
 
-  constructor() { }
+  public height: number;
+
+  constructor(private router: Router, private renderer: Renderer) {
+    this.height = window.outerHeight - TOP_PADDING;
+  }
 
   ngOnInit() {
+    this.router.events.subscribe((event: NavigationEnd) => {
+      this.height = window.outerHeight - TOP_PADDING;
+    });
   }
 
 }

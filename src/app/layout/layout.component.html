@@ -5,7 +5,11 @@
 
     <app-top-nav></app-top-nav>
 
-    <router-outlet></router-outlet>
+    <!-- page content -->
+    <div class="right_col" role="main" [style.minHeight.px]="height">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /page content -->
 
     <app-footer></app-footer>
 
