@@ -1,5 +1,5 @@
 import { NavigationEnd, Router } from '@angular/router';
-import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 const TOP_PADDING = 141;
 
@@ -10,11 +10,9 @@ const TOP_PADDING = 141;
 })
 export class LayoutComponent implements OnInit {
 
-  @ViewChild('main') el: ElementRef;
-
   public height: number;
 
-  constructor(private router: Router, private renderer: Renderer) {
+  constructor(private router: Router) {
     this.height = window.outerHeight - TOP_PADDING;
   }
 
