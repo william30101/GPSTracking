@@ -4,7 +4,7 @@ import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import {NotificationService} from "../../shared/services/notification.service";
+import { NotificationService } from '../../shared/services/notification.service';
 
 @Component({
   selector: 'app-login',
