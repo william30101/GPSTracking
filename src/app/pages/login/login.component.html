@@ -7,7 +7,7 @@
     <div class="animate form login_form">
       <section class="login_content">
         <form  (ngSubmit)="onSubmit(f)" #f="ngForm">
-          <h1>Login Form</h1>
+          <h1>登錄頁面</h1>
           <div>
             <input type="email" placeholder="Email" name="email" id="email" ngModel class="form-control" required>
           </div>
@@ -17,15 +17,15 @@
           </div>
           <div>
             <!-- <a class="btn btn-default submit" routerLink="/">Log in</a> -->
-            <button type="submit" class="btn btn-primary submit">Submit</button>
-            <a class="reset_pass" href="#">Lost your password?</a>
+            <button type="submit" class="btn btn-primary submit">送出</button>
+            <a class="reset_pass" href="#">忘記密碼？</a>
           </div>
 
           <div class="clearfix"></div>
 
           <div class="separator">
-            <p class="change_link">New to site?
-              <a routerLink="/register">Create Account </a>
+            <p class="change_link">新訪客？
+              <a routerLink="/register">建立帳戶</a>
             </p>
 
             <div class="clearfix"></div>

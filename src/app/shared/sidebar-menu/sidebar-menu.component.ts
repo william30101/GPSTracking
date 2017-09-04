@@ -4,6 +4,7 @@ import { GlobalState } from './../global.state';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -17,7 +18,6 @@ export class SidebarMenuComponent implements OnInit {
   name: string;
   email: string;
   uid: string;
-
 
   public navs = [{
     path: '/dashboard',
@@ -35,7 +35,8 @@ export class SidebarMenuComponent implements OnInit {
 
   constructor(private user: UserService,
     private router: Router,
-    private fire: FirebaseApiService) { }
+    private fire: FirebaseApiService,
+    private auth: AuthService) { }
 
   ngOnInit() {
     this.user.statusChange.subscribe(userData => {
@@ -53,20 +54,22 @@ export class SidebarMenuComponent implements OnInit {
 
     });
 
-    firebase.auth().onAuthStateChanged(userData => {
-      if (userData && userData.emailVerified) {
-        if (this.isLoggedIn) {
-          console.log('User is Logged in and menu options should be visible');
-        } else {
-          console.log('User is Logged in i.e never explicitly logged out but the state in our header is incorrect');
-          this.fire.getUserFromDatabase(userData.uid)
-            .then(userDataFromDatabase => {
-              this.user.set(userDataFromDatabase);
-              // this.router.navigate(["/allposts"]);
-            });
-        }
-      }
-    });
+    this.auth.isAuthStatesChanged();
+
+    // firebase.auth().onAuthStateChanged(userData => {
+    //   if (userData && userData.emailVerified) {
+    //     if (this.isLoggedIn) {
+    //       console.log('User is Logged in and menu options should be visible');
+    //     } else {
+    //       console.log('User is Logged in i.e never explicitly logged out but the state in our header is incorrect');
+    //       this.fire.getUserFromDatabase(userData.uid)
+    //         .then(userDataFromDatabase => {
+    //           this.user.set(userDataFromDatabase);
+    //           // this.router.navigate(["/allposts"]);
+    //         });
+    //     }
+    //   }
+    // });
 
   }
 

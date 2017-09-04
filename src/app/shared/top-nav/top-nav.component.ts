@@ -4,6 +4,7 @@ import { GlobalState } from './../global.state';
 import { Component, OnInit, Renderer } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-top-nav',
@@ -21,7 +22,8 @@ export class TopNavComponent implements OnInit {
     private _state: GlobalState,
     private user: UserService,
     private router: Router,
-    private fire: FirebaseApiService) { }
+    private fire: FirebaseApiService,
+    private auth: AuthService) { }
 
   ngOnInit() {
 
@@ -40,20 +42,22 @@ export class TopNavComponent implements OnInit {
 
     });
 
-    firebase.auth().onAuthStateChanged(userData => {
-      if (userData && userData.emailVerified) {
-        if (this.isLoggedIn) {
-          console.log('User is Logged in and menu options should be visible');
-        } else {
-          console.log('User is Logged in i.e never explicitly logged out but the state in our header is incorrect');
-          this.fire.getUserFromDatabase(userData.uid)
-            .then(userDataFromDatabase => {
-              this.user.set(userDataFromDatabase);
-              // this.router.navigate(["/allposts"]);
-            });
-        }
-      }
-    });
+    this.auth.isAuthStatesChanged();
+
+    // firebase.auth().onAuthStateChanged(userData => {
+    //   if (userData && userData.emailVerified) {
+    //     if (this.isLoggedIn) {
+    //       console.log('User is Logged in and menu options should be visible');
+    //     } else {
+    //       console.log('User is Logged in i.e never explicitly logged out but the state in our header is incorrect');
+    //       this.fire.getUserFromDatabase(userData.uid)
+    //         .then(userDataFromDatabase => {
+    //           this.user.set(userDataFromDatabase);
+    //           // this.router.navigate(["/allposts"]);
+    //         });
+    //     }
+    //   }
+    // });
 
   }
 

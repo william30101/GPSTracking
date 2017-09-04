@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .then(userFromDatabase => {
         if (userFromDatabase) {
           this.user.set(userFromDatabase);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/map']);
         }
 
       })
