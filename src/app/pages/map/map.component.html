@@ -1,28 +1,32 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Map</h3>
+  </div>
 
-  <div class="page-title">
-    <div class="title_left">
-      <h3>Map</h3>
-    </div>
-
-    <div class="title_right">
-      <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for...">
-          <span class="input-group-btn">
+  <div class="title_right">
+    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
             </span>
-        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="clearfix"></div>
+<div class="clearfix"></div>
 
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<div class="row">
+<div class="row map-wrap">
   <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-md-12 func-area">
+      <button type="button" class="btn btn-primary">威廉</button>
+      <button type="button" class="btn btn-primary">大豬頭</button>
+    </div>
+
     <agm-map [latitude]="lat" [longitude]="lng">
       <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
       <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radi" [fillColor]="colo"></agm-circle>
