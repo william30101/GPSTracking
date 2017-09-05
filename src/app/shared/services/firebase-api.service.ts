@@ -41,7 +41,7 @@ export class FirebaseApiService {
       }, () => {
         const fileUrl = uploadTask.snapshot.downloadURL;
         resolve({fileUrl, fileName});
-      })
+      });
 
     });
 
