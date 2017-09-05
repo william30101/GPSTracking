@@ -23,13 +23,17 @@
 <div class="row map-wrap">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="col-md-12 func-area">
-      <button type="button" class="btn btn-primary">威廉</button>
-      <button type="button" class="btn btn-primary">大豬頭</button>
+      <button type="button" class="btn btn-primary" (click)="onCurrentLocationBtn()">即時位置</button>
+      <button type="button" class="btn btn-primary" (click)="onHistoryBtn()">歷史軌跡</button>
     </div>
 
-    <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
       <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
       <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radi" [fillColor]="colo"></agm-circle>
+      <agm-marker *ngFor="let m of markers; let i = index"
+                 [latitude]="m.lat"
+                 [longitude]="m.lng"
+                 [label]="m.label"></agm-marker>
     </agm-map>
   </div>
 </div>
