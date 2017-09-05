@@ -3,6 +3,7 @@ import { Component, Renderer, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../shared/services/notification.service';
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +25,10 @@ export class LoginComponent implements OnDestroy {
   onSubmit(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.auth.login(email, password)
-      .then(o => this.router.navigate(['/map']))
-      .catch(err => {
-        this.notifier.display('error', err);
-      });
+    this.auth.login(email, password).subscribe(
+      o => this.router.navigate(['/map']),
+      err => this.notifier.display('error', err)
+    );
   }
 
   ngOnDestroy() {

@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class AuthService {
 
-  private isLoginSubject: BehaviorSubject<any>;
+  private isLoginSubject: BehaviorSubject<boolean>;
 
   constructor(
     private firebaseAPI: FirebaseApiService,
@@ -19,19 +19,22 @@ export class AuthService {
   }
 
   login(email, password) {
-    return firebase.auth().signInWithEmailAndPassword(email, password).then(user => {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(user => {
       if (user.emailVerified) {
         return this.firebaseAPI.getUserFromDatabase(user.uid);
       } else {
         this.logout();
-        throw new Error('The email is not verified');
+        this.isLoginSubject.error(new Error('The email is not verified'));
       }
     }).then(userFromDatabase => {
       if (userFromDatabase) {
         this.user.set(userFromDatabase);
       }
-      return userFromDatabase;
+      this.isLoginSubject.next(true);
+    }).catch(err => {
+      this.isLoginSubject.error(err);
     });
+    return this.isLoginSubject.asObservable();
   }
 
   logout() {
