@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { AngularFireModule } from 'angularfire2';
 import { AuthGuard } from './services/auth.guard';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -10,7 +11,8 @@ import { RouterModule } from '@angular/router';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { UserService } from './services/user.service';
-import {NotificationService} from "./services/notification.service";
+import { NotificationService } from './services/notification.service';
+
 
 const SHARED_COMPONENTS = [
   FooterComponent,
@@ -27,6 +29,7 @@ const SHARED_COMPONENTS = [
   ],
   providers: [
     GlobalState,
+    AuthService,
     AuthGuard,
     FirebaseApiService,
     UserService,

@@ -15,8 +15,7 @@ import { DeviceComponent } from './pages/device/device.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotificationComponent } from './pages/notification/notification.component';
-import {AuthService} from "./shared/services/auth.service";
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -35,9 +34,10 @@ import {AuthService} from "./shared/services/auth.service";
     SharedModule,
     FormsModule,
     Ng2SmartTableModule,
-    AgmCoreModule.forRoot(agmConfig)
+    AgmCoreModule.forRoot(agmConfig),
+    TranslateModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
