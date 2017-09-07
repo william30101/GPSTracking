@@ -1,17 +1,19 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import * as firebase from 'firebase';
+import { User } from './../models/user';
+import { EventEmitter, Injectable } from '@angular/core';
+// import * as firebase from 'firebase';
 
 @Injectable()
 export class UserService {
 
-
   statusChange = new EventEmitter<any>();
+  profile: User;
 
   // constructor(private liveMessages: LiveMessageService) { }
 
   constructor() { }
 
   set(userFromDatabase) {
+    this.profile = userFromDatabase;
     localStorage.setItem('user', JSON.stringify(userFromDatabase));
     this.statusChange.emit(userFromDatabase);
 
@@ -52,8 +54,7 @@ export class UserService {
 
   getProfile() {
     const user = localStorage.getItem('user');
-    return JSON.parse(user);
+    this.profile = JSON.parse(user);
+    return this.profile;
   }
-
-
 }

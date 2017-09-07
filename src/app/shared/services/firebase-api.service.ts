@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {UserService} from './user.service';
+import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -40,7 +40,7 @@ export class FirebaseApiService {
         reject(error);
       }, () => {
         const fileUrl = uploadTask.snapshot.downloadURL;
-        resolve({fileUrl, fileName});
+        resolve({ fileUrl, fileName });
       });
 
     });

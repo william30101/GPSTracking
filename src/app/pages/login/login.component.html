@@ -6,14 +6,14 @@
   <div class="login_wrapper">
     <div class="animate form login_form">
       <section class="login_content">
-        <form  (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
           <h1>登錄頁面</h1>
           <div>
             <input type="email" placeholder="Email" name="email" id="email" ngModel class="form-control" required>
           </div>
 
           <div>
-            <input type="password" placeholder="Password"  name="password" id="password" ngModel class="form-control" required>
+            <input type="password" placeholder="Password" name="password" id="password" ngModel class="form-control" required>
           </div>
           <div>
             <!-- <a class="btn btn-default submit" routerLink="/">Log in</a> -->

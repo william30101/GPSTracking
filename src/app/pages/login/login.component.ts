@@ -3,7 +3,7 @@ import { Component, Renderer, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../shared/services/notification.service';
-import 'rxjs/add/operator/catch';
+
 
 @Component({
   selector: 'app-login',
