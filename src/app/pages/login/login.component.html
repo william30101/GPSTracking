@@ -7,32 +7,32 @@
     <div class="animate form login_form">
       <section class="login_content">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-          <h1>登錄頁面</h1>
+          <h1>{{'LoginAndRegister.LoginPage' | translate}}</h1>
           <div>
-            <input type="email" placeholder="Email" name="email" id="email" ngModel class="form-control" required>
+            <input type="email" placeholder="{{'LoginAndRegister.Email' | translate}}" name="email" id="email" ngModel class="form-control" required>
           </div>
 
           <div>
-            <input type="password" placeholder="Password" name="password" id="password" ngModel class="form-control" required>
+            <input type="password" placeholder="{{'LoginAndRegister.Password' | translate}}" name="password" id="password" ngModel class="form-control" required>
           </div>
           <div>
             <!-- <a class="btn btn-default submit" routerLink="/">Log in</a> -->
-            <button type="submit" class="btn btn-primary submit">送出</button>
-            <a class="reset_pass" href="#">忘記密碼？</a>
+            <button type="submit" class="btn btn-primary submit">{{'LoginAndRegister.Submit' | translate}}</button>
+            <a class="reset_pass" href="#">{{'LoginAndRegister.ForgotPassword' | translate}}</a>
           </div>
 
           <div class="clearfix"></div>
 
           <div class="separator">
-            <p class="change_link">新訪客？
-              <a routerLink="/register">建立帳戶</a>
+            <p class="change_link">{{'LoginAndRegister.NewGuset' | translate}}
+              <a routerLink="/register">{{'LoginAndRegister.CreateAccount' | translate}}</a>
             </p>
 
             <div class="clearfix"></div>
             <br />
 
             <div>
-              <h1><i class="fa fa-paw"></i> Chenyue website!</h1>
+              <h1><i class="fa fa-paw"></i>  {{'Common.FooterTitle' | translate}}</h1>
             </div>
           </div>
         </form>

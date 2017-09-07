@@ -13,15 +13,15 @@
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right" *dropdownMenu>
-            <li><a href="javascript:;"> Profile</a></li>
+            <li><a href="javascript:;"> {{'TopNav.Profile' | translate}}</a></li>
             <li>
               <a href="javascript:;">
                 <span class="badge bg-red pull-right">50%</span>
-                <span>Settings</span>
+                <span>{{'TopNav.Settings' | translate}}</span>
               </a>
             </li>
-            <li><a href="javascript:;">Help</a></li>
-            <li><a routerLink="/login" (click)="logout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+            <li><a href="javascript:;">{{'TopNav.Help' | translate}}</a></li>
+            <li><a routerLink="/login" (click)="logout()"><i class="fa fa-sign-out pull-right"></i> {{'TopNav.Logout' | translate}}</a></li>
           </ul>
         </li>
       </ul>

@@ -10,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class MapComponent implements OnInit {
 
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 23.049887;
+  lng: number = 120.575095;
   radi: number = 1000;
   zoom: number = 10;
   colo: String = 'DarkRed';

@@ -1,6 +1,7 @@
 {
   "Common": {
-    "Welcome": "您好"
+    "Welcome": "您好",
+    "FooterTitle" : "辰月網通"
   },
   "Map": {
     "Current": "即時位置",
@@ -10,5 +11,25 @@
     "Dashboard": "儀表板",
     "Device": "裝置",
     "Map": "地圖"
+  },
+  "LoginAndRegister": {
+    "CreatePage" : "註冊頁面",
+    "LoginPage" : "登錄頁面",
+    "NotificationMsg":"認證信已經寄到你的信箱，請照著信件內的指示進行認證",
+    "UserName" : "使用者名稱",
+    "Password" : "密碼",
+    "Email" : "電子信箱",
+    "Submit" : "送出",
+    "AlreadyMember" : "已經是會員了",
+    "Login" : "登入",
+    "ForgotPassword" : "忘記密碼？",
+    "NewGuset" : "新訪客",
+    "CreateAccount" : "建立帳戶"
+  },
+  "TopNav": {
+    "Profile" : "關於我",
+    "Settings" : "設定",
+    "Help" : "說明",
+    "Logout" : "登出"
   }
 }
