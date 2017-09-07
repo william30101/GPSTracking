@@ -23,8 +23,8 @@
 <div class="row map-wrap">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="col-md-12 func-area">
-      <button type="button" class="btn btn-primary" (click)="onCurrentLocationBtn()">即時位置</button>
-      <button type="button" class="btn btn-primary" (click)="onHistoryBtn()">歷史軌跡</button>
+      <button type="button" class="btn btn-primary" (click)="onCurrentLocationBtn()">{{'Map.Current' | translate}}</button>
+      <button type="button" class="btn btn-primary" (click)="onHistoryBtn()">{{'Map.History' | translate}}</button>
     </div>
 
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">

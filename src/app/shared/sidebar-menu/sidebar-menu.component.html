@@ -12,7 +12,7 @@
         <img src="images/img.jpg" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
-        <span>Welcome,</span>
+        <span>{{'Common.Welcome' | translate}},</span>
         <h2>{{user.profile.name}}</h2>
       </div>
     </div>
@@ -24,7 +24,7 @@
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
       <div class="menu_section">
         <ul class="nav side-menu">
-          <li *ngFor="let nav of navs" routerLinkActive="active"><a routerLink="{{nav.path}}"><i [class]="nav.class"></i> {{nav.title}} </a></li>
+          <li *ngFor="let nav of navs" routerLinkActive="active"><a routerLink="{{nav.path}}"><i [class]="nav.class"></i> {{nav.title | translate}} </a></li>
         </ul>
       </div>
     </div>

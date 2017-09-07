@@ -21,15 +21,15 @@ export class SidebarMenuComponent implements OnInit {
 
   public navs = [{
     path: '/dashboard',
-    title: 'Dashboard',
+    title: 'Menu.Dashboard',
     class: 'fa fa-dashboard'
   }, {
     path: '/map',
-    title: 'Map',
+    title: 'Menu.Map',
     class: 'fa fa-map'
   }, {
     path: '/device',
-    title: 'Device',
+    title: 'Menu.Device',
     class: 'fa fa-mobile-phone'
   }];
 

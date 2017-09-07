@@ -15,7 +15,6 @@ import { DeviceComponent } from './pages/device/device.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotificationComponent } from './pages/notification/notification.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -34,8 +33,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SharedModule,
     FormsModule,
     Ng2SmartTableModule,
-    AgmCoreModule.forRoot(agmConfig),
-    TranslateModule.forRoot()
+    AgmCoreModule.forRoot(agmConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
