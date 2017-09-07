@@ -28,7 +28,7 @@
     </div>
 
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icon" ></agm-marker>
       <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radi" [fillColor]="colo"></agm-circle>
       <agm-marker *ngFor="let m of markers; let i = index"
                  [latitude]="m.lat"

@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
+
+
+
 export class MapComponent implements OnInit {
 
   lat: number = 51.678418;
@@ -12,7 +15,7 @@ export class MapComponent implements OnInit {
   radi: number = 1000;
   zoom: number = 10;
   colo: String = 'DarkRed';
-
+  icon: string = 'assets/eagle1.ico';
 
   markers: marker[];
 
@@ -77,11 +80,11 @@ export class MapComponent implements OnInit {
 
 }
 
-// just an interface for type safety.
+
+
 interface marker {
   lat: number;
   lng: number;
   label?: string;
-  draggable: boolean;
+  draggable?: boolean;
 }
-
