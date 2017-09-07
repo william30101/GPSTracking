@@ -1,0 +1,14 @@
+{
+  "Common": {
+    "Welcome": "您好"
+  },
+  "Map": {
+    "Current": "即時位置",
+    "History": "歷史軌跡"
+  },
+  "Menu": {
+    "Dashboard": "儀表板",
+    "Device": "裝置",
+    "Map": "地圖"
+  }
+}

@@ -21,15 +21,15 @@ export class SidebarMenuComponent implements OnInit {
 
   public navs = [{
     path: '/dashboard',
-    title: 'Dashboard',
+    title: 'Menu.Dashboard',
     class: 'fa fa-dashboard'
   }, {
     path: '/map',
-    title: 'Map',
+    title: 'Menu.Map',
     class: 'fa fa-map'
   }, {
     path: '/device',
-    title: 'Device',
+    title: 'Menu.Device',
     class: 'fa fa-mobile-phone'
   }];
 
@@ -39,38 +39,6 @@ export class SidebarMenuComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit() {
-    this.user.statusChange.subscribe(userData => {
-      if (userData) {
-        this.isLoggedIn = true;
-        this.name = userData.name;
-        this.email = userData.email;
-        this.uid = userData.uid;
-      } else {
-        this.isLoggedIn = false;
-        this.name = null;
-        this.email = null;
-        this.uid = null;
-      }
-
-    });
-
-    this.auth.isAuthStatesChanged();
-
-    // firebase.auth().onAuthStateChanged(userData => {
-    //   if (userData && userData.emailVerified) {
-    //     if (this.isLoggedIn) {
-    //       console.log('User is Logged in and menu options should be visible');
-    //     } else {
-    //       console.log('User is Logged in i.e never explicitly logged out but the state in our header is incorrect');
-    //       this.fire.getUserFromDatabase(userData.uid)
-    //         .then(userDataFromDatabase => {
-    //           this.user.set(userDataFromDatabase);
-    //           // this.router.navigate(["/allposts"]);
-    //         });
-    //     }
-    //   }
-    // });
-
   }
 
 

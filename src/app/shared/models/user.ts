@@ -1,8 +1,6 @@
-export interface Authenticate {
-  username: string;
-  password: string;
-}
-
 export interface User {
+  isLoggedIn: boolean;
   name: string;
+  email: string;
+  uid: string;
 }

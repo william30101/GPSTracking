@@ -1,21 +1,21 @@
+import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase';
 import { FirebaseApiService } from './firebase-api.service';
 import { UserService } from './user.service';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
+import 'rxjs/add/operator/take';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
 
-  private isLoginSubject: BehaviorSubject<boolean>;
+  private isLoginSubject: Subject<boolean>;
 
   constructor(
     private firebaseAPI: FirebaseApiService,
     private user: UserService
   ) {
-    this.isLoginSubject = new BehaviorSubject(null);
+    this.isLoginSubject = new Subject();
   }
 
   login(email, password) {
@@ -34,31 +34,32 @@ export class AuthService {
     }).catch(err => {
       this.isLoginSubject.error(err);
     });
-    return this.isLoginSubject.asObservable();
+    return this.isLoggedIn();
   }
 
   logout() {
+    console.log('logout');
+    this.user.destroy();
     firebase.auth().signOut().catch(err => {
       console.log('signout err ' + err);
     });
   }
 
   isAuthStatesChanged() {
-    // firebase.auth().onAuthStateChanged(this.user$);
-    // console.log(this.user$);
     firebase.auth().onAuthStateChanged(userData => {
       if (userData && userData.emailVerified) {
-        console.log('User is Logged in i.e never explicitly logged out but the state in our header is incorrect');
-        this.firebaseAPI.getUserFromDatabase(userData.uid)
-          .then(userDataFromDatabase => {
-            this.user.set(userDataFromDatabase);
-            // this.router.navigate(["/allposts"]);
-          });
+        this.firebaseAPI.getUserFromDatabase(userData.uid).then(userDataFromDatabase => {
+          this.user.set(userDataFromDatabase);
+          this.isLoginSubject.next(true);
+        }).catch(() => this.isLoginSubject.next(false));
+      } else {
+        this.isLoginSubject.next(false);
       }
     });
+    return this.isLoggedIn();
   }
 
   isLoggedIn(): Observable<boolean> {
-    return this.isLoginSubject.asObservable();
+    return this.isLoginSubject.asObservable().take(1);
   }
 }

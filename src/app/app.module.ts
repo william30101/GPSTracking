@@ -15,8 +15,6 @@ import { DeviceComponent } from './pages/device/device.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotificationComponent } from './pages/notification/notification.component';
-import {AuthService} from "./shared/services/auth.service";
-
 
 @NgModule({
   declarations: [
@@ -37,7 +35,7 @@ import {AuthService} from "./shared/services/auth.service";
     Ng2SmartTableModule,
     AgmCoreModule.forRoot(agmConfig)
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

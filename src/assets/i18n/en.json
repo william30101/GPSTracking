@@ -1,0 +1,14 @@
+{
+  "Common": {
+    "Welcome": "Welcome"
+  },
+  "Map": {
+    "Current": "Current",
+    "History": "History"
+  },
+  "Menu": {
+    "Dashboard": "Dashboard",
+    "Device": "Device",
+    "Map": "Map"
+  }
+}
