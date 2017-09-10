@@ -1,3 +1,4 @@
+import { D3Helper } from './services/d3-helper.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -48,7 +49,8 @@ const SHARED_COMPONENTS = [
     AuthGuard,
     FirebaseApiService,
     UserService,
-    NotificationService
+    NotificationService,
+    D3Helper
   ],
   declarations: [
     ...SHARED_COMPONENTS
