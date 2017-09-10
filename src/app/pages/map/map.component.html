@@ -27,30 +27,28 @@
       <button type="button" class="btn btn-primary" (click)="onHistoryBtn()">{{'Map.History' | translate}}</button>
     </div>
 
-    <div  class="col-md-12 left-bottom-button">
-      <div><button type="button" class="btn btn-primary circle-button" >回上頁</button></div>
-      <div><button type="button" class="btn btn-primary circle-button" >再想想</button></div>
-      <div><button type="button" class="btn btn-primary circle-button" >數據</button></div>
-      <div><button type="button" class="btn btn-primary circle-button" >說明</button></div>
-    </div>
-
-    <div  class="col-md-12 text-right">
-      <div><button type="button" class="btn btn-primary circle-button" >放個電池</button></div>
-    </div>
-
-    <div  class="col-md-12 text-right right-top-button">
-      <div><button type="button" class="btn btn-primary circle-button" >下戴目前軌跡</button></div>
-      <div><button type="button" class="btn btn-primary circle-button" >蜂鳴器</button></div>
-      <div><button type="button" class="btn btn-primary circle-button" >2D地圖</button></div>
-    </div>
-
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-      <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icon" ></agm-marker>
+      <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icon"></agm-marker>
       <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radi" [fillColor]="colo"></agm-circle>
-      <agm-marker *ngFor="let m of markers; let i = index"
-                 [latitude]="m.lat"
-                 [longitude]="m.lng"
-                 [label]="m.label"></agm-marker>
+      <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label"></agm-marker>
     </agm-map>
+
+    <div class="right-top-button">
+      <div><button type="button" class="btn btn-primary">放個電池</button></div>
+    </div>
+
+    <div class="left-bottom-button">
+      <button type="button" class="btn btn-primary btn1">回上頁</button>
+      <button type="button" class="btn btn-primary btn2">再想想</button>
+      <button type="button" class="btn btn-primary btn3">數據</button>
+      <button type="button" class="btn btn-primary btn4">說明</button>
+      <div class="circle-button"></div>
+    </div>
+
+    <div class="right-bottom-button">
+      <div><button type="button" class="btn btn-primary">下戴目前軌跡</button></div>
+      <div><button type="button" class="btn btn-primary">蜂鳴器</button></div>
+      <div><button type="button" class="btn btn-primary">2D地圖</button></div>
+    </div>
   </div>
 </div>

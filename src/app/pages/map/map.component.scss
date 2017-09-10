@@ -10,30 +10,50 @@ agm-map {
     left: 10px;
     z-index: 1;
   }
-  .left-button {
-    left: 10px;
-    z-index: 1;
-  }
   .left-bottom-button {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    z-index: 1;
+    bottom: 0;
+    .circle-button {
+      height: 100px;
+      width: 100px;
+      border: 2px solid blue;
+      border-radius: 50%;
+    }
+    .btn1 {
+      position: absolute;
+      top: -40px;
+      left: 10px;
+    }
+    .btn2 {
+      position: absolute;
+      top: -28px;
+      left: 82px;
+    }
+    .btn3 {
+      position: absolute;
+      top: 16px;
+      left: 106px;
+    }
+    .btn4 {
+      position: absolute;
+      top: 60px;
+      left: 118px;
+    }
   }
   .right-top-button {
     position: absolute;
-    top: 50px;
-    right: 10px;
-    z-index: 1;
+    top: 0;
+    right: 0;
   }
-
-  .circle-button {
-    border-radius: 100%;
+  .right-bottom-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 
-
-.stations, .stations svg {
+.stations,
+.stations svg {
   position: absolute;
 }
 
