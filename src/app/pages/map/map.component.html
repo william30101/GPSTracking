@@ -27,6 +27,23 @@
       <button type="button" class="btn btn-primary" (click)="onHistoryBtn()">{{'Map.History' | translate}}</button>
     </div>
 
+    <div  class="col-md-12 left-bottom-button">
+      <div><button type="button" class="btn btn-primary circle-button" >回上頁</button></div>
+      <div><button type="button" class="btn btn-primary circle-button" >再想想</button></div>
+      <div><button type="button" class="btn btn-primary circle-button" >數據</button></div>
+      <div><button type="button" class="btn btn-primary circle-button" >說明</button></div>
+    </div>
+
+    <div  class="col-md-12 text-right">
+      <div><button type="button" class="btn btn-primary circle-button" >放個電池</button></div>
+    </div>
+
+    <div  class="col-md-12 text-right right-top-button">
+      <div><button type="button" class="btn btn-primary circle-button" >下戴目前軌跡</button></div>
+      <div><button type="button" class="btn btn-primary circle-button" >蜂鳴器</button></div>
+      <div><button type="button" class="btn btn-primary circle-button" >2D地圖</button></div>
+    </div>
+
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
       <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icon" ></agm-marker>
       <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radi" [fillColor]="colo"></agm-circle>

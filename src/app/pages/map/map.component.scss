@@ -10,4 +10,42 @@ agm-map {
     left: 10px;
     z-index: 1;
   }
+  .left-button {
+    left: 10px;
+    z-index: 1;
+  }
+  .left-bottom-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+  }
+  .right-top-button {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    z-index: 1;
+  }
+
+  .circle-button {
+    border-radius: 100%;
+  }
+}
+
+
+.stations, .stations svg {
+  position: absolute;
+}
+
+.stations svg {
+  width: 60px;
+  height: 20px;
+  padding-right: 100px;
+  font: 10px sans-serif;
+}
+
+.stations circle {
+  fill: brown;
+  stroke: black;
+  stroke-width: 1.5px;
 }
