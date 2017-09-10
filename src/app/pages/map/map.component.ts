@@ -16,6 +16,7 @@ export class MapComponent implements OnInit {
   zoom: number = 10;
   colo: String = 'DarkRed';
   icon: string = 'assets/eagle1.ico';
+  batteryIcon: string = 'assets/Battery-32.png';
 
   markers: marker[];
 
@@ -31,6 +32,7 @@ export class MapComponent implements OnInit {
     this.lng = 121.575095;
 
     this.zoom = 15;
+    this.radi = 30;
 
   }
 
