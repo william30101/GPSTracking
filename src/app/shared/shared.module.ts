@@ -61,6 +61,7 @@ const SHARED_COMPONENTS = [
     ...SHARED_COMPONENTS,
     HttpClientModule,
     TranslateModule,
+    BsDropdownModule,
     PopoverModule
   ]
 })
