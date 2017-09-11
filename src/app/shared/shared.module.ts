@@ -1,11 +1,12 @@
 import { D3Helper } from './services/d3-helper.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AuthService } from './services/auth.service';
 import { AngularFireModule } from 'angularfire2';
 import { AuthGuard } from './services/auth.guard';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 import { CommonModule } from '@angular/common';
 import { FirebaseApiService } from './services/firebase-api.service';
 import { FooterComponent } from './footer/footer.component';
@@ -34,6 +35,7 @@ const SHARED_COMPONENTS = [
     RouterModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
+    PopoverModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
