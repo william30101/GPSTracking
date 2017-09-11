@@ -60,7 +60,8 @@ const SHARED_COMPONENTS = [
   exports: [
     ...SHARED_COMPONENTS,
     HttpClientModule,
-    TranslateModule
+    TranslateModule,
+    PopoverModule
   ]
 })
 export class SharedModule { }
