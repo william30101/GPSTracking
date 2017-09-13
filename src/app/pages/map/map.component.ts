@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable?: boolean;
+}
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-
-
-
 export class MapComponent implements OnInit {
 
   lat: number = 23.049887;
@@ -16,9 +20,8 @@ export class MapComponent implements OnInit {
   zoom: number = 10;
   colo: String = 'DarkRed';
   icon: string = 'assets/eagle1.ico';
-  batteryIcon: string = 'assets/Battery-32.png';
 
-  markers: marker[];
+  markers: Marker[];
 
 
   constructor() { }
@@ -80,13 +83,4 @@ export class MapComponent implements OnInit {
 
   }
 
-}
-
-
-
-interface marker {
-  lat: number;
-  lng: number;
-  label?: string;
-  draggable?: boolean;
 }
