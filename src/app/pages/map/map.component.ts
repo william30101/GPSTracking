@@ -23,7 +23,7 @@ export class MapComponent implements OnInit {
   icon: string = 'assets/eagle1.ico';
 
   markers: Marker[];
-  id: any;
+  id: number;
 
   constructor(private route: ActivatedRoute) { }
 
