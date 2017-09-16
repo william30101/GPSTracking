@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 interface Marker {
@@ -22,11 +23,15 @@ export class MapComponent implements OnInit {
   icon: string = 'assets/eagle1.ico';
 
   markers: Marker[];
+  id: any;
 
-
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      this.id = +params.get('id');
+      console.log(this.id);
+    });
   }
 
   onCurrentLocationBtn() {
@@ -43,42 +48,42 @@ export class MapComponent implements OnInit {
     console.log('onHistoryBtn be clicked');
 
     this.markers = [
-    {
-      lat: 25.048013,
+      {
+        lat: 25.048013,
         lng: 121.577084,
-      label: 'A',
-      draggable: true
-    },
-    {
-      lat: 25.046545,
+        label: 'A',
+        draggable: true
+      },
+      {
+        lat: 25.046545,
         lng: 121.573865,
-      label: 'B',
-      draggable: false
-    },
-    {
-      lat: 25.046117,
+        label: 'B',
+        draggable: false
+      },
+      {
+        lat: 25.046117,
         lng: 121.570174,
-      label: 'C',
-      draggable: true
-    },
-    {
-      lat: 25.046117,
+        label: 'C',
+        draggable: true
+      },
+      {
+        lat: 25.046117,
         lng: 121.560174,
-      label: 'D',
-      draggable: true
-    },
-    {
-      lat: 25.046117,
+        label: 'D',
+        draggable: true
+      },
+      {
+        lat: 25.046117,
         lng: 121.550174,
-      label: 'E',
-      draggable: true
-    },
-    {
-      lat: 25.046117,
+        label: 'E',
+        draggable: true
+      },
+      {
+        lat: 25.046117,
         lng: 121.540174,
-      label: 'F',
-      draggable: true
-    }
+        label: 'F',
+        draggable: true
+      }
     ];
 
   }
