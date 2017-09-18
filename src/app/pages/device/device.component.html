@@ -2,12 +2,19 @@
 
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <ng2-smart-table [settings]="settings"
-                         [source]="data"
-                         (deleteConfirm)="onDeleteConfirm($event)"
-                         (editConfirm)="onSaveConfirm($event)"
-                         (createConfirm)="onCreateConfirm($event)">
-        </ng2-smart-table>
+          <div class="btn-group" dropdown  *ngFor="let device of deviceLists">
+            <button dropdownToggle  class="btn btn-primary circle-button-not-work dropdown-toggle"
+                    (click)="onClickCheck(device.data.deviceName)" >
+           {{device.data.nickName}} <span class="caret"></span></button>
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem"><a class="dropdown-item" href="#">更換圖像</a></li>
+                <li role="menuitem"><a class="dropdown-item" href="/map?{{device.data.nickName}}">地圖</a></li>
+              </ul>
+          </div>
+
       </div>
+
+
+
     </div>
   </div>

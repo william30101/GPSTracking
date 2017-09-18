@@ -17,6 +17,9 @@ import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { UserService } from './services/user.service';
 import { NotificationService } from './services/notification.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {ModalHelperService} from "./services/modal-helper.service";
+import {ConfirmPopupComponent} from "../pages/device/confirm-popup.component";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,6 +39,7 @@ const SHARED_COMPONENTS = [
     HttpClientModule,
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
+    ModalModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -52,17 +56,22 @@ const SHARED_COMPONENTS = [
     FirebaseApiService,
     UserService,
     NotificationService,
-    D3Helper
+    D3Helper,
+    ModalHelperService
   ],
   declarations: [
     ...SHARED_COMPONENTS
+  ],
+  entryComponents: [
+    ConfirmPopupComponent
   ],
   exports: [
     ...SHARED_COMPONENTS,
     HttpClientModule,
     TranslateModule,
     BsDropdownModule,
-    PopoverModule
+    PopoverModule,
+    ModalModule
   ]
 })
 export class SharedModule { }

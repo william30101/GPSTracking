@@ -1,60 +1,24 @@
-import { ActivatedRoute } from '@angular/router';
-import {Component, Input, OnInit} from '@angular/core';
-import {D3Helper} from '../../shared/services/d3-helper.service';
+import {OnInit} from '@angular/core';
 import {google} from '@agm/core/services/google-maps-types';
+import {D3Helper} from '../../shared/services/d3-helper.service';
 
-interface Marker {
-  lat: number;
-  lng: number;
-  label?: string;
-  draggable?: boolean;
-}
 
-@Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
-})
-export class MapComponent implements OnInit {
+export class D3testComponent {
 
-  constructor(private D3: D3Helper,
-              private route: ActivatedRoute) {
+
+  constructor(private D3: D3Helper) {
 
   }
 
-  lat: number = 23.049887;
-  lng: number = 120.575095;
-  radi: number = 1000;
-  zoom: number = 10;
-  colo: String = 'DarkRed';
-  icon: string = 'assets/eagle1.ico';
-
-  markers: Marker[];
-  id: number;
-
-  ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      this.id = +params.get('id');
-      console.log(this.id);
-
-      this.lat = 25.049887;
-      this.lng = 121.575095;
-
-      this.zoom = 15;
-      this.radi = 30;
-    });
-
-
-/*
   stations_json = {'KMAE': [-120.12, 36.98, 'MADERA MUNICIPAL AIRPORT',
     [26, 1, 2, 5, 6, 3, 2, 1, 2, 7, 29, 12, 3]], 'KSJC': [-121.92, 37.37, 'SAN JOSE INTERNATIONAL  AIRPORT',
-    [28, 1, 1, 1, 6, 10, 5, 3, 2, 4, 14, 21, 7]], 'KMCE': [-120.50, 37.28,
+    [28, 1, 1, 1, 6, 10, 5, 3, 2, 4, 14, 21, 7]], 'KMCE':[-120.50, 37.28,
     'MERCED MUNICIPAL AIRPORT', [29, 1, 1, 3, 7, 5, 2, 1, 3, 6, 12, 26, 5]],
     'KMER': [-120.57, 37.37, 'Merced / Castle Air Force Base', [34, 1, 1, 1, 4, 5, 2, 1, 1, 4, 17, 22, 7]],
     'KAPC': [-122.28, 38.20, 'NAPA COUNTY AIRPORT', [23, 2, 1, 6, 3, 3, 8, 18, 11, 13, 4, 3, 5]],
-    'KSUU': [-121.95, 38.27, 'Fairfield / Travis Air Force Base', [13, 7, 4, 3, 3, 6, 4, 13, 33, 4, 1, 2, 7]],
+    'KSUU': [-121.95, 38.27, 'Fairfield / Travis Air Force Base',[13, 7, 4, 3, 3, 6, 4, 13, 33, 4, 1, 2, 7]],
     'KSQL': [-122.25, 37.52, 'San Carlos Airport', [18, 3, 2, 2, 3, 4, 3, 2, 5, 17, 16, 12, 12]],
-    'KSNS': [-121.60, 36.67, 'SALINAS MUNICIPAL AIRPORT', [21, 1, 1, 6, 12, 3, 1, 2, 9, 21, 17, 5, 1]],
+    'KSNS': [-121.60, 36.67, 'SALINAS MUNICIPAL AIRPORT', [21,1, 1, 6, 12, 3, 1, 2, 9, 21, 17, 5, 1]],
     'KMOD': [-120.95, 37.62, 'MODESTO CITY CO SHAM FLD', [27, 1, 1, 2, 10, 5, 1, 1, 1, 3, 17, 24, 8]],
     'KOAK': [-122.23, 37.72, 'METRO OAKLAND INTERNATIONAL  AIRPORT ', [16, 3, 3, 2, 4, 6, 3, 4, 9, 23, 20, 6, 2]],
     'KSCK': [-121.23, 37.90, 'STOCKTON METROPOLITAN AIRPORT ', [21, 2, 2, 3, 6, 8, 2, 1, 4, 15, 19, 12, 4]],
@@ -65,70 +29,16 @@ export class MapComponent implements OnInit {
     'KHWD': [-122.12, 37.67, 'HAYWARD AIR TERMINAL', [20, 2, 7, 2, 2, 6, 3, 3, 6, 23, 18, 6, 2]],
     'KSTS': [-122.82, 38.50, 'SANTA ROSA SONOMA COUNTY', [46, 1, 0, 1, 5, 13, 10, 4, 3, 3, 4, 6, 3]],
     'KSMF': [-121.60, 38.70, 'SACRAMENTO INTERNATIONAL  AIRPORT', [19, 2, 1, 2, 4, 21, 18, 8, 3, 2, 5, 12, 4]],
-    'KNUQ': [-122.05, 37.43, 'MOFFETT FIELD', [35, 3, 1, 1, 4, 7, 2, 1, 2, 5, 6, 17, 15]], 'KRHV': [ -121.82, 37.33,
-      'San Jose / Reid / Hillv',  [35, 0, 0, 1, 4, 4, 2, 1, 1, 10, 28, 11, 1]], 'KWVI': [ -121.78, 36.93,
+    'KNUQ': [-122.05, 37.43, 'MOFFETT FIELD', [35, 3, 1, 1, 4, 7, 2, 1, 2, 5, 6, 17, 15]], 'KRHV':[-121.82, 37.33,
+      'San Jose / Reid / Hillv',  [35, 0, 0, 1, 4, 4, 2, 1, 1, 10, 28, 11, 1]], 'KWVI':[-121.78, 36.93,
       'WATSONVILLE MUNICIPAL AIRPORT ',  [44, 1, 2, 3, 4, 5, 7, 9, 8, 4, 6, 5, 2]],
     'KMHR': [-121.30, 38.55, 'Sacramento, Sacramento Mather Airport', [21, 1, 1, 2, 8, 15, 12, 12, 7, 4, 5, 7, 3]],
     'KVCB': [-121.95, 38.38, 'VACAVILLE NUT TREE AIRPORT', [36, 2, 1, 1, 2, 6, 10, 18, 10, 2, 2, 5, 6]],
     'KSFO': [-122.37, 37.62, 'SAN FRANCISCO INTERNATIONAL  AIRPORT ', [13, 3, 3, 2, 3, 4, 4, 4, 7, 31, 20, 2, 3]],
     'KLVK': [-121.82, 37.70, 'LIVERMORE MUNICIPAL AIRPORT ', [32, 2, 7, 3, 1, 1, 2, 7, 9, 17, 16, 2, 1]]};
-*/
- // myData = this.stations_json;
-  }
 
-  onCurrentLocationBtn() {
-    console.log('onCurrentLocationBtn be clicked');
-    this.lat = 25.049887;
-    this.lng = 121.575095;
+  myData = this.stations_json;
 
-    this.zoom = 15;
-    this.radi = 30;
-
-  }
-
-  onHistoryBtn() {
-    console.log('onHistoryBtn be clicked');
-
-    this.markers = [
-      {
-        lat: 25.048013,
-        lng: 121.577084,
-        label: 'A',
-        draggable: true
-      },
-      {
-        lat: 25.046545,
-        lng: 121.573865,
-        label: 'B',
-        draggable: false
-      },
-      {
-        lat: 25.046117,
-        lng: 121.570174,
-        label: 'C',
-        draggable: true
-      },
-      {
-        lat: 25.046117,
-        lng: 121.560174,
-        label: 'D',
-        draggable: true
-      },
-      {
-        lat: 25.046117,
-        lng: 121.550174,
-        label: 'E',
-        draggable: true
-      },
-      {
-        lat: 25.046117,
-        lng: 121.540174,
-        label: 'F',
-        draggable: true
-      }
-    ];
-
-  }
 
 
   initMap(): void {
@@ -227,4 +137,6 @@ export class MapComponent implements OnInit {
 
 
 
+
 }
+

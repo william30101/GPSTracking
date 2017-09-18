@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {LocalDataSource} from 'ng2-smart-table';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {ModalHelperService} from '../../shared/services/modal-helper.service';
+import {FirebaseApiService} from '../../shared/services/firebase-api.service';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-device',
@@ -7,6 +11,20 @@ import {LocalDataSource} from 'ng2-smart-table';
   styleUrls: ['./device.component.scss']
 })
 export class DeviceComponent implements OnInit {
+
+
+  bsModalRef: BsModalRef;
+  mappingRef: any;
+  deviceLists: any = [];
+
+  public users = [
+    { name: '大寶', age: 21 },
+    { name: '小明', age: 24 },
+    { name: '老王', age: 18 },
+    { name: '國王', age: 18 },
+    { name: '皇后', age: 18 },
+    { name: '新增設備', age: 18 }
+  ];
 
   source: LocalDataSource;
   settings = {
@@ -33,66 +51,48 @@ export class DeviceComponent implements OnInit {
     }
   };
 
-
-  data = [
-    {
-      id: 1,
-      name: '我的大鳥',
-      timestamp: '20170822110000'
-    },
-    {
-      id: 2,
-      name: '小東西',
-      timestamp: '20170823110000'
-    },
-    {
-      id: 3,
-      name: '沒什麼',
-      timestamp: '20170825110000'
-    }
-  ];
-
-
-
-  constructor() {
-    this.source = new LocalDataSource(this.data);
+  constructor(private modalHelp: ModalHelperService,
+              private firebaseApi: FirebaseApiService,
+              private user: UserService) {
+    // this.source = new LocalDataSource(this.data);
   }
 
   ngOnInit() {
+    const userProfile = this.user.getProfile();
 
+
+
+    this.mappingRef = this.firebaseApi.getDeviceMappingRef(userProfile.uid);
+    this.mappingRef.on('child_added', data => {
+      console.log('key : ' + data.key + ' value: ' + data.val());
+      this.deviceLists.push({
+        key: data.key,
+        data: data.val()
+      });
+    });
+
+
+    this.deviceLists.push({data : {deviceName : '新增設備', nickName : '新增設備'}});
+
+    // this.mappingRef.on('value', function(snapshot) {
+    //    this.deviceLists = snapshot.val();
+    //
+    //   console.log('device : ' + snapshot.val());
+    // }, function (errorObject) {
+    //   console.log('The read failed: ' + errorObject.code);
+    // });
+
+    // console.log('devices : ' + this.deviceLists);
+
+     // this.deviceLists.splice(1, 1);
+    // this.mappingRef.set(this.deviceLists);
   }
 
-
-
-  onDeleteConfirm(event) {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
+  public onClickCheck(name: string) {
+    console.log('name : ' + name);
+    if (name === '新增設備') {
+      this.modalHelp.showConfirm('Confirmation', 'How to pass data to modal?');
     }
   }
-
-  onSaveConfirm(event) {
-    if (window.confirm('Are you sure you want to save?')) {
-      // event.newData['name'] += ' + added in code';
-      console.log('save ');
-      console.log(event.newData['name']);
-      event.confirm.resolve(event.newData);
-    } else {
-      event.confirm.reject();
-    }
-  }
-
-  onCreateConfirm(event) {
-    if (window.confirm('Are you sure you want to create?')) {
-      // event.newData['name'] += ' + added in code';
-      console.log('create ');
-      console.log(event.newData['name']);
-      event.confirm.resolve(event.newData);
-    } else {
-      event.confirm.reject();
-    }
-  }
-
 
 }

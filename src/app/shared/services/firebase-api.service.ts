@@ -26,6 +26,16 @@ export class FirebaseApiService {
     return text;
   }
 
+  getDeviceInfo(uid) {
+    const ref = firebase.database().ref('Mapping/' + uid);
+    return ref.once('value')
+      .then(snapshot => snapshot.val());
+  }
+
+  getDeviceMappingRef(uid) {
+    return firebase.database().ref('Mapping').child(uid);
+  }
+
   uploadFile(file) {
     const fileName = this.generateRandomFileName();
     const fileRef = firebase.storage().ref().child('image/' + fileName);

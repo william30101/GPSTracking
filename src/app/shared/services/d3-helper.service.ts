@@ -9,4 +9,8 @@ export class D3Helper {
   init(parent: Element) {
   }
 
+  drawPoint(){
+
+  }
+
 }
